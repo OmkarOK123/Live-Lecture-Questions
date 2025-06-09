@@ -353,7 +353,7 @@ If your program returns:
 
 ---
 
-### 🧠 Tip for Teaching Students:
+### 🧠 Tip for Students:
 
 > Think of `return 0;` like saying "**everything is okay**" to the system.
 > Any other number is like saying "**something went wrong – here’s the code**."
