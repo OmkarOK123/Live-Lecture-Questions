@@ -358,3 +358,260 @@ If your program returns:
 > Think of `return 0;` like saying "**everything is okay**" to the system.
 > Any other number is like saying "**something went wrong – here’s the code**."
 
+---
+---
+
+## ✅ 1. `<stdio.h>` – **Standard Input/Output**
+
+### 📌 Common Functions:
+
+* `printf()`, `scanf()`
+* `getchar()`, `putchar()`
+* `gets()`, `puts()`
+* `fopen()`, `fclose()`, `fread()`, `fwrite()`
+
+### 🎯 Purpose:
+
+* For **input/output operations**
+
+  * Console I/O
+  * File I/O
+
+### 🧠 Example:
+
+```c
+#include <stdio.h>
+printf("Enter a number:");
+scanf("%d", &x);
+```
+
+---
+
+## ✅ 2. `<stdlib.h>` – **Standard Library**
+
+### 📌 Common Functions:
+
+* `malloc()`, `calloc()`, `free()` – dynamic memory
+* `exit()`, `atoi()`, `rand()`, `srand()`
+
+### 🎯 Purpose:
+
+* Memory allocation
+* Random number generation
+* Program termination
+
+### 🧠 Example:
+
+```c
+#include <stdlib.h>
+int* arr = (int*) malloc(10 * sizeof(int));
+```
+
+---
+
+## ✅ 3. `<string.h>` – **String Operations**
+
+### 📌 Common Functions:
+
+* `strlen()`, `strcpy()`, `strcat()`
+* `strcmp()`, `strncpy()`, `strchr()`
+
+### 🎯 Purpose:
+
+* To work with **character strings** (not string data type — just `char[]`)
+
+### 🧠 Example:
+
+```c
+#include <string.h>
+strcpy(name, "Omkar");
+```
+
+---
+
+## ✅ 4. `<math.h>` – **Mathematical Functions**
+
+### 📌 Common Functions:
+
+* `sqrt()`, `pow()`, `ceil()`, `floor()`, `sin()`, `cos()`
+
+### 🎯 Purpose:
+
+* For mathematical computations, trigonometry, etc.
+
+### 🧠 Example:
+
+```c
+#include <math.h>
+double root = sqrt(25.0);
+```
+
+📌 **Note:** Compile with `-lm` in GCC to link math library: `gcc file.c -lm`
+
+---
+
+## ✅ 5. `<ctype.h>` – **Character Classification**
+
+### 📌 Common Functions:
+
+* `isalpha()`, `isdigit()`, `isspace()`
+* `toupper()`, `tolower()`
+
+### 🎯 Purpose:
+
+* For checking and converting characters
+
+### 🧠 Example:
+
+```c
+#include <ctype.h>
+if (isalpha(ch)) printf("It is a letter");
+```
+
+---
+
+## ✅ 6. `<time.h>` – **Time and Date Functions**
+
+### 📌 Common Functions:
+
+* `time()`, `localtime()`, `difftime()`, `clock()`, `sleep()` (non-standard on some compilers)
+
+### 🎯 Purpose:
+
+* To get system time, measure program duration, create delays
+
+### 🧠 Example:
+
+```c
+#include <time.h>
+time_t now = time(NULL);
+```
+
+---
+
+## ✅ 7. `<stdbool.h>` – **Boolean Type Support**
+
+### 📌 Common Macros:
+
+* `true`, `false`, `bool`
+
+### 🎯 Purpose:
+
+* To use `bool` like in other languages instead of `int`
+
+### 🧠 Example:
+
+```c
+#include <stdbool.h>
+bool flag = true;
+```
+
+---
+
+## ✅ 8. `<limits.h>` – **Integer Limits**
+
+### 📌 Common Macros:
+
+* `INT_MAX`, `INT_MIN`, `CHAR_MAX`, etc.
+
+### 🎯 Purpose:
+
+* To get range of data types
+
+### 🧠 Example:
+
+```c
+#include <limits.h>
+printf("%d", INT_MAX);
+```
+
+---
+
+## ✅ 9. `<float.h>` – **Floating Point Limits**
+
+### 📌 Common Macros:
+
+* `FLT_MAX`, `FLT_MIN`, `DBL_MAX`, etc.
+
+### 🎯 Purpose:
+
+* To know precision and size limits of `float`, `double`
+
+---
+
+## ✅ 10. `<conio.h>` – **Console I/O (Non-standard)**
+
+### 📌 Common Functions:
+
+* `getch()`, `getche()`, `clrscr()`
+
+### 🎯 Purpose:
+
+* Used mostly in **Turbo C/C++** for console input and screen clearing.
+* ❌ **Not standard** in GCC/Linux.
+
+---
+
+## ✅ 11. `<assert.h>` – **Assertions (Debugging)**
+
+### 📌 Common Function:
+
+* `assert(expression)`
+
+### 🎯 Purpose:
+
+* Stops the program if a condition fails (used in debugging)
+
+### 🧠 Example:
+
+```c
+#include <assert.h>
+assert(x != 0);
+```
+
+---
+
+## ✅ 12. `<errno.h>` – **Error Handling**
+
+### 📌 Common Macros:
+
+* `errno`, `perror()`, `strerror()`
+
+### 🎯 Purpose:
+
+* To track and describe errors from system/library calls
+
+---
+
+## ✅ 13. `<stddef.h>` – **Standard Definitions**
+
+### 📌 Common Macros/Types:
+
+* `NULL`, `size_t`, `ptrdiff_t`
+
+### 🎯 Purpose:
+
+* Common data types used in standard library
+
+---
+
+### 📌 Summary Table
+
+| Header        | Key Use                                |
+| ------------- | -------------------------------------- |
+| `<stdio.h>`   | Input/output (keyboard, screen, files) |
+| `<stdlib.h>`  | Memory, conversions, exit, random      |
+| `<string.h>`  | String handling                        |
+| `<math.h>`    | Math functions                         |
+| `<ctype.h>`   | Character checks                       |
+| `<time.h>`    | System time, delays                    |
+| `<stdbool.h>` | Boolean support                        |
+| `<limits.h>`  | Data type limits                       |
+| `<float.h>`   | Float/double precision                 |
+| `<conio.h>`   | Console I/O (Windows/Turbo C only)     |
+| `<assert.h>`  | Debugging support                      |
+| `<errno.h>`   | Error reporting                        |
+| `<stddef.h>`  | Common types like `NULL`, `size_t`     |
+
+---
+
