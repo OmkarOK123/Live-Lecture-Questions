@@ -249,3 +249,112 @@ PORTB &= ~(1 << 0); // Clear bit 0 (turn off LED)
 * **Widespread tool and compiler support**
 
 ---
+
+
+---
+
+## ✅ Meaning of `return` Values in C (mainly from `main()`)
+In C programming, the `return` statement is used in a function to **return a value to the caller** — most commonly from the `main()` function to the operating system. The value you return has a **conventional meaning**, especially in the `main()` function, where:
+
+### 1. **`return 0;` – Successful Execution**
+
+* **Meaning**: Program ran successfully without any errors.
+* **Why**: By convention, operating systems interpret a return value of **0** as **success**.
+
+**Example:**
+
+```c
+int main() {
+    printf("Program finished successfully.\n");
+    return 0;
+}
+```
+
+✔️ **OS understands this as: "The program ran fine."**
+
+---
+
+### 2. **`return 1;`, `return -1;`, etc. – Indicate Errors**
+
+* **Non-zero values** indicate that the program **encountered some error or abnormal termination**.
+* **Positive numbers** and **negative numbers** can mean different types of errors.
+
+You can define different return values to represent specific failure types:
+
+| Return Value | Meaning (example)               |
+| ------------ | ------------------------------- |
+| `return 1;`  | General error                   |
+| `return 2;`  | File not found                  |
+| `return 3;`  | Invalid user input              |
+| `return -1;` | Fatal system error or exception |
+
+> 🔧 These meanings are **defined by the programmer or system**, and can be customized.
+
+**Example:**
+
+```c
+int main() {
+    if (file_not_found)
+        return 2;
+    if (invalid_input)
+        return 3;
+    return 0;
+}
+```
+
+---
+
+### 3. **Use in Other Functions (Not Just `main`)**
+
+In user-defined functions, the return value is used to pass a result back to the caller:
+
+**Example:**
+
+```c
+int add(int a, int b) {
+    return a + b;
+}
+
+int main() {
+    int result = add(3, 5);
+    printf("Result = %d\n", result);  // Output: 8
+    return 0;
+}
+```
+
+Here, the return value is part of logic — not success/failure.
+
+---
+
+## 🛠️ How Are Return Values Used Practically?
+
+### ✅ Shell or Command-Line (Linux/Unix/Windows)
+
+If you run a program via the terminal, you can **check the return value** using:
+
+```bash
+echo $?
+```
+
+If your program returns:
+
+* `0`: All good ✔️
+* `1`, `2`, etc.: You can identify what went wrong ❌
+
+---
+
+### 📦 Summary Table
+
+| Return Value | Used in `main()` | Used in Functions | Common Meaning          |
+| ------------ | ---------------- | ----------------- | ----------------------- |
+| `0`          | Yes              | Yes               | Success / Result        |
+| Positive     | Yes              | Yes               | Specific error / Result |
+| Negative     | Yes              | Rare              | Serious/fatal error     |
+
+---
+
+### 🧠 Tip for Teaching Students:
+
+> Think of `return 0;` like saying "**everything is okay**" to the system.
+> Any other number is like saying "**something went wrong – here’s the code**."
+
